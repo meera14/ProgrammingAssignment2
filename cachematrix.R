@@ -1,15 +1,24 @@
-## Put comments here that give an overall description of what your
-## functions do
 
-## Write a short comment describing this function
+# makeCasheMatrix : special "matrix" object that can cache its inverse.
+# cacheSolve : calculate inverse of the special "matrix" returned by makeCacheMatrix
 
-makeCacheMatrix <- function(x = matrix()) {
-
+makeCacheMatrix <- function(x) { 
+  if (!is.matrix(x)) {
+    warning("argument is not a matrix: returning NA")
+    return(NA_real_)
+  }
+ 
 }
 
-
-## Write a short comment describing this function
-
 cacheSolve <- function(x, ...) {
-        ## Return a matrix that is the inverse of 'x'
+  m <- makeCacheMatrix(x)
+  if(!is.null(m)) {
+    message("getting cached data")
+    return(m)
+  }
+  
+  else
+  data <- makeCacheMatrix(x)
+  m <- solve(x, ...)
+  return(m) 
 }
